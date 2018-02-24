@@ -30,11 +30,11 @@ public class TwoSumProblems {
         for(int i=0; i<a.length; i++){
             int x = a[i];
             if(map.containsKey(sKey-x)){
-                map.put((sKey-x)+1, i+1);
+                return new int[]{map.get(sKey-x)+1, i+1};
             }
             map.put(x,i);
         }
-        return new int[]{0,0}; // no result found
+        throw new IllegalArgumentException("No two sum solution") ;
     }
 
     public static void printElements(int[] a){
@@ -45,11 +45,9 @@ public class TwoSumProblems {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.printf("Enter any skey : %d", input.nextInt());
-        while (input.hasNext()){
-            int sKey = input.nextInt();
-            int[] solution = findSumIndexes(IntStream.of(1,2,3,4,5,6,7).toArray(), sKey);
-            printElements(solution);
-        }
+        System.out.printf("Enter any skey : %d");
+        int sKey = input.nextInt();
+        int[] solution = findSumIndexes(IntStream.of(1,2,3,4,5,6,7).toArray(), sKey);
+        printElements(solution);
     }
 }
